@@ -1,5 +1,5 @@
 # nsi-routing-ospfd
-Quagga ospfd example
+Quagga ospfd env
 
 ## Requirement
 * vagrant (https://www.vagrantup.com/downloads)

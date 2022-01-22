@@ -32,12 +32,19 @@ zebra
 https://www.quagga.net/docs/quagga.html#OSPFv2
 
 ## Practical Exercice
-192.168.
-60.1, 61.1 <=> 61.2, 62.2 <=> 62.3, 63.3
+prefix with 192.168.
+```
+        72.0--[R]--84.0
+        /      |       \
+60.0--[R]     83.0     [R]--64.0
+        \      |       /
+        73.0--[R]--94.0
+
+```
 
 Configure ospfd on each host to enable:
 ```
-vagrant@ubuntu-ospf1:~$ ping 192.168.63.3
-PING 192.168.63.3 (192.168.63.3) 56(84) bytes of data.
-64 bytes from 192.168.63.3: icmp_seq=1 ttl=63 time=0.534 ms
+vagrant@ubuntu-ospf1:~$ ping -I 192.168.60.1 192.168.64.4
+PING 192.168.64.4 (192.168.64.4) from 192.168.60.1 : 56(84) bytes of data.
+64 bytes from 192.168.64.4: icmp_seq=1 ttl=63 time=0.535 ms
 ```

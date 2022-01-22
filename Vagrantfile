@@ -49,31 +49,40 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+  config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+    vb.memory = "512"
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  config.vm.define "ubuntu-ospfd1" do |node1|
-    node1.vm.hostname = "ubuntu-ospfd1"
-    node1.vm.network "private_network", ip: "192.168.60.1", netmask: "255.255.255.0", virtualbox__intnet: "60"
-    node1.vm.network "private_network", ip: "192.168.61.1", netmask: "255.255.255.0", virtualbox__intnet: "61"
+  config.vm.define "ubuntu-ospfd1" do |node|
+    node.vm.hostname = "ubuntu-ospfd1"
+    node.vm.network "private_network", ip: "192.168.60.1", netmask: "255.255.255.0", virtualbox__intnet: "60" ### SRC
+    node.vm.network "private_network", ip: "192.168.72.1", netmask: "255.255.255.0", virtualbox__intnet: "72" #12
+    node.vm.network "private_network", ip: "192.168.73.1", netmask: "255.255.255.0", virtualbox__intnet: "73" #13
   end
-  config.vm.define "ubuntu-ospfd2" do |node2|
-    node2.vm.hostname = "ubuntu-ospfd2"
-    node2.vm.network "private_network", ip: "192.168.61.2", netmask: "255.255.255.0", virtualbox__intnet: "61"
-    node2.vm.network "private_network", ip: "192.168.62.2", netmask: "255.255.255.0", virtualbox__intnet: "62"
+  config.vm.define "ubuntu-ospfd2" do |node|
+    node.vm.hostname = "ubuntu-ospfd2"
+    node.vm.network "private_network", ip: "192.168.72.2", netmask: "255.255.255.0", virtualbox__intnet: "72" #12
+    node.vm.network "private_network", ip: "192.168.83.2", netmask: "255.255.255.0", virtualbox__intnet: "83" #23
+    node.vm.network "private_network", ip: "192.168.84.2", netmask: "255.255.255.0", virtualbox__intnet: "84" #24
   end
-  config.vm.define "ubuntu-ospfd3" do |node2|
-    node2.vm.hostname = "ubuntu-ospfd3"
-    node2.vm.network "private_network", ip: "192.168.62.3", netmask: "255.255.255.0", virtualbox__intnet: "62"
-    node2.vm.network "private_network", ip: "192.168.63.3", netmask: "255.255.255.0", virtualbox__intnet: "63"
+  config.vm.define "ubuntu-ospfd3" do |node|
+    node.vm.hostname = "ubuntu-ospfd3"
+    node.vm.network "private_network", ip: "192.168.73.3", netmask: "255.255.255.0", virtualbox__intnet: "73" #13
+    node.vm.network "private_network", ip: "192.168.83.3", netmask: "255.255.255.0", virtualbox__intnet: "83" #23
+    node.vm.network "private_network", ip: "192.168.94.3", netmask: "255.255.255.0", virtualbox__intnet: "94" #34
+  end
+  config.vm.define "ubuntu-ospfd4" do |node|
+    node.vm.hostname = "ubuntu-ospfd4"
+    node.vm.network "private_network", ip: "192.168.84.4", netmask: "255.255.255.0", virtualbox__intnet: "84" #24
+    node.vm.network "private_network", ip: "192.168.94.4", netmask: "255.255.255.0", virtualbox__intnet: "94" #34
+    node.vm.network "private_network", ip: "192.168.64.4", netmask: "255.255.255.0", virtualbox__intnet: "64" ### DST
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as

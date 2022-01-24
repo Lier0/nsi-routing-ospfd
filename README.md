@@ -19,13 +19,15 @@ vagrant up
 
 ### cli
 ```
-telnet localhost 2602
+telnet localhost 2604
 zebra
 
 > enable
 # conf t
 (config)# router ospf
 (config-router)# help
+...
+# sh ip os route
 ```
 
 ### doc
